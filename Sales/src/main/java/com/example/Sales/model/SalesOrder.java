@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,6 +25,17 @@ public class SalesOrder {
     private String description;
     private double price;
 
+//    public List<String> getItems() {
+//        return items;
+//    }
+
+//    public void setItems(List<String> items) {
+//        this.items = items;
+//    }
+//
+//    @ElementCollection
+//    private List<String> items;
+
     public SalesOrder() {
     }
 
@@ -32,6 +44,7 @@ public class SalesOrder {
         this.email=email;
         this.description=description;
         this.price=price;
+//        this.items=items;
     }
 
     @Override

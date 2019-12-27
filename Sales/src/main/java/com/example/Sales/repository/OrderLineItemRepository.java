@@ -4,6 +4,7 @@ import com.example.Sales.model.OrderLineItem;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -15,5 +16,8 @@ public interface OrderLineItemRepository extends CrudRepository<OrderLineItem,Lo
 
     Optional<OrderLineItem> findByOrderId(Long order_id);
 
+    List<OrderLineItem> getOrderLineItemsByOrderId(Long id);
+
+    Optional<OrderLineItem> getOrderLineItemByItemNameAndOrderId(String item,Long order_id);
 
 }

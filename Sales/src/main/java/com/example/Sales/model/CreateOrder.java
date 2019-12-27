@@ -22,6 +22,8 @@ public class CreateOrder {
 
     private List<String> items;
 
+    public CreateOrder() {
+    }
 
     public CreateOrder(String description, Date date, @Email String email, List<String> items) {
         this.description = description;

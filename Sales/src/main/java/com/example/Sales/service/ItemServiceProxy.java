@@ -16,4 +16,5 @@ public interface ItemServiceProxy {
     //getAll
     @GetMapping("/items")
     List<Items> getAllItems();
+
 }

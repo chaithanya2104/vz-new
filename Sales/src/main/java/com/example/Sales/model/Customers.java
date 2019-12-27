@@ -2,8 +2,8 @@ package com.example.Sales.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "customers")
+//@Entity
+//@Table(name = "customers")
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

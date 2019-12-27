@@ -21,11 +21,11 @@
     </properties>
 
     <modules>
-        <module>ConfigurationServer</module>
+<!--        <module>ConfigServer</module>-->
         <module>Customer</module>
         <module>Item</module>
         <module>Sales</module>
         <module>H2</module>
     </modules>
-    
+
 </project>

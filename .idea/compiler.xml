@@ -6,14 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="H2" />
-        <module name="Item" />
         <module name="ConfigurationServer" />
         <module name="Sales" />
         <module name="Customer" />
+        <module name="H2" />
+        <module name="Item" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ConfigServer" target="11" />
       <module name="ConfigurationServer" target="11" />
       <module name="Customer" target="11" />
       <module name="H2" target="11" />
@@ -24,6 +25,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ConfigServer" options="-parameters" />
       <module name="ConfigurationServer" options="-parameters" />
       <module name="Customer" options="-parameters" />
       <module name="H2" options="-parameters" />

@@ -31,5 +31,10 @@ public class ItemService {
             return items.get();
         return null;
     }
+//    public void getPriceByName(String name){
+//        System.out.println(itemRepository.findPriceByName(name));
+////        Double price = itemRepository.findPriceByName(name);
+////        return price;
+//    }
 
 }

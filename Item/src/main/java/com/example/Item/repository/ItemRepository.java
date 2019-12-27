@@ -11,5 +11,4 @@ import java.util.Optional;
 public interface ItemRepository extends CrudRepository<Items,Long> {
     List<Items> findAll();
     Optional<Items> findByName(String name);
-
 }

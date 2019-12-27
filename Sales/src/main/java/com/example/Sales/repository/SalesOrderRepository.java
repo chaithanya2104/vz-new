@@ -13,6 +13,5 @@ public interface SalesOrderRepository extends CrudRepository<SalesOrder,Long> {
     List<SalesOrder> findAll();
     @Override
     Optional<SalesOrder> findById(Long id);
-    Optional<SalesOrder> findByEmail(String email);
-
+    List<SalesOrder> findByEmail(String email);
 }

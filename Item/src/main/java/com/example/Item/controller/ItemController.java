@@ -32,4 +32,8 @@ public class ItemController {
         return itemService.getItemByName(name);
     }
 
+//    @GetMapping("/itemsPrice/{name}")
+//    public Double getPriceByName(@PathVariable String name){
+//            return getItemByName(name).getPrice();
+//    }
 }
