@@ -26,6 +26,8 @@
         <module>Item</module>
         <module>Sales</module>
         <module>H2</module>
+        <module>EurekaServer</module>
+        <module>ZuulGateway</module>
     </modules>
 
 </project>

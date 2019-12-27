@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Customer" />
+        <module name="ZuulGateway" />
         <module name="ConfigurationServer" />
         <module name="Sales" />
-        <module name="Customer" />
+        <module name="EurekaServer" />
         <module name="H2" />
         <module name="Item" />
       </profile>
@@ -17,10 +19,12 @@
       <module name="ConfigServer" target="11" />
       <module name="ConfigurationServer" target="11" />
       <module name="Customer" target="11" />
+      <module name="EurekaServer" target="11" />
       <module name="H2" target="11" />
       <module name="Item" target="11" />
       <module name="MS-1" target="11" />
       <module name="Sales" target="11" />
+      <module name="ZuulGateway" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -28,10 +32,12 @@
       <module name="ConfigServer" options="-parameters" />
       <module name="ConfigurationServer" options="-parameters" />
       <module name="Customer" options="-parameters" />
+      <module name="EurekaServer" options="-parameters" />
       <module name="H2" options="-parameters" />
       <module name="Item" options="-parameters" />
       <module name="MS-1" options="-parameters" />
       <module name="Sales" options="-parameters" />
+      <module name="ZuulGateway" options="-parameters" />
     </option>
   </component>
 </project>
