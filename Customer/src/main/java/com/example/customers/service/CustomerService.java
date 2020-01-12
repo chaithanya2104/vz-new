@@ -1,6 +1,7 @@
 package com.example.customers.service;
 
 
+import com.example.customers.exception.CustomerNotFoundException;
 import com.example.customers.model.Customers;
 import com.example.customers.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,10 @@ public class CustomerService {
             System.out.println("got it...");
             return customerWithEmail.get();
         }
-        return null;
+        else{
+            throw new CustomerNotFoundException("Customer not found for email: "+ email);
+        }
+
     }
 
 }

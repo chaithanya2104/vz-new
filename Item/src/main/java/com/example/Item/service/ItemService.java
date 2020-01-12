@@ -1,5 +1,6 @@
 package com.example.Item.service;
 
+import com.example.Item.exception.ItemNotFoundException;
 import com.example.Item.model.Items;
 import com.example.Item.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,10 @@ public class ItemService {
         Optional<Items> items = itemRepository.findByName(name);
         if(items.isPresent())
             return items.get();
-        return null;
+        else{
+            throw new ItemNotFoundException("Customer not found for item_name: "+ name);
+        }
+
     }
 //    public void getPriceByName(String name){
 //        System.out.println(itemRepository.findPriceByName(name));

@@ -1,8 +1,10 @@
 package com.example.Sales.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
@@ -16,7 +18,10 @@ public class CreateOrder {
     private String description;
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @CreatedDate
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date date;
+
     @Email
     private String email;
 

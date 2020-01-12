@@ -5,11 +5,14 @@ import com.example.customers.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @RestController
+
 public class CustomerController {
 
 
@@ -33,7 +36,7 @@ public class CustomerController {
         return service.getCustomerByEmail(email);
     }
 
-    @PostMapping("/customers/add")
+    @PostMapping("customers/add")
     public Customers add(@Valid @ModelAttribute("customer") Customers customers, BindingResult result){
         if(result.hasErrors()){
             return null;
@@ -41,5 +44,10 @@ public class CustomerController {
         System.out.println("hit the path");
         System.out.println(customers.getFirstName() + "*********************************");
         return service.add(customers);
+
+
+        //return the created user
+        //template /customers/{email} ==> /customers/customers.getEmail()
+
     }
 }

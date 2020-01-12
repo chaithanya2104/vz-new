@@ -1,9 +1,9 @@
 package com.example.customers.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "customers")
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,6 +11,9 @@ public class Customers {
 
     private String firstName;
     private String lastName;
+
+    @NotNull
+    @Column(unique = true)
     private String email;
 
     public Customers() {

@@ -1,5 +1,6 @@
 package com.example.Sales.service;
 
+import com.example.Sales.exception.OrdersNotFoundException;
 import com.example.Sales.model.CreateOrder;
 import com.example.Sales.model.OrderLineItem;
 import com.example.Sales.model.SalesOrder;
@@ -51,8 +52,9 @@ public class SalesOrderService {
     {
         List<SalesOrder> salesOrder = null;
         salesOrder = this.salesOrderRepository.findByEmail(email);
-
-
+        if (salesOrder.isEmpty()){
+            throw new OrdersNotFoundException("Orders for "+ email + "not found");
+        }
         return salesOrder;
     }
 //    public List<SalesOrder> getOrderByEmail(String email){

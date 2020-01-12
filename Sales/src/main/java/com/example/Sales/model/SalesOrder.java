@@ -1,6 +1,7 @@
 package com.example.Sales.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -18,6 +19,8 @@ public class SalesOrder {
     private Long id;
 
    @DateTimeFormat(pattern = "yyyy-MM-dd")
+   @CreatedDate
+   @Column(nullable = false, updatable = false)
     private Date date;
 //    @Email
     private String email;

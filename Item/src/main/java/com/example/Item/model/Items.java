@@ -1,6 +1,7 @@
 package com.example.Item.model;
 
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
@@ -13,7 +14,9 @@ public class Items {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
+
     private Double price;
     private String description;
 
