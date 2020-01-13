@@ -97,6 +97,12 @@ public class SalesOrderController {
         }
         return id;
     }
+
+
+    @GetMapping("/orders/new/{email}")
+    public List<SalesOrder> getOrderListByEmail(@PathVariable("email") String email){
+        return salesOrderService.getOrderByEmail(email);
+    }
 }
 
 

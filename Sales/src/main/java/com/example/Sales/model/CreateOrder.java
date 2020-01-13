@@ -22,6 +22,7 @@ public class CreateOrder {
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date date;
 
+
     @Email
     private String email;
 
