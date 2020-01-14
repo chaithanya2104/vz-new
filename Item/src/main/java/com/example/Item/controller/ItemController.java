@@ -12,8 +12,12 @@ import java.util.List;
 @RestController
 public class ItemController {
 
-    @Autowired
+//    @Autowired
     private ItemService itemService;
+
+    public ItemController(ItemService itemService){
+        this.itemService=itemService;
+    }
 
     //addItem
     @PostMapping("/items")
@@ -33,11 +37,6 @@ public class ItemController {
     public Items getItemByName(@PathVariable String name){
         return itemService.getItemByName(name);
     }
-
-//    @GetMapping("/itemsPrice/{name}")
-//    public Double getPriceByName(@PathVariable String name){
-//            return getItemByName(name).getPrice();
-//    }
 
     @GetMapping("/items/hystrix-fault-tolerance")
     @HystrixCommand(fallbackMethod = "faultToleranceFallbackMethod")

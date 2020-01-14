@@ -12,8 +12,12 @@ import java.util.Optional;
 @Service
 public class ItemService {
 
-    @Autowired
+//    @Autowired
     private ItemRepository itemRepository;
+
+    public ItemService(ItemRepository itemRepository){
+        this.itemRepository=itemRepository;
+    }
 
     //addItem
     public Items add(Items item){
@@ -31,14 +35,9 @@ public class ItemService {
         if(items.isPresent())
             return items.get();
         else{
-            throw new ItemNotFoundException("Customer not found for item_name: "+ name);
+            return null;
         }
 
     }
-//    public void getPriceByName(String name){
-//        System.out.println(itemRepository.findPriceByName(name));
-////        Double price = itemRepository.findPriceByName(name);
-////        return price;
-//    }
 
 }

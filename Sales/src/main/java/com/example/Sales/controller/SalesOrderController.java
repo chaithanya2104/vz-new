@@ -1,58 +1,36 @@
 package com.example.Sales.controller;
 
 import com.example.Sales.exception.OrderCannotBeCreated;
-import com.example.Sales.exception.OrdersNotFoundException;
 import com.example.Sales.model.*;
 import com.example.Sales.service.CustomerServiceProxy;
 import com.example.Sales.service.ItemServiceProxy;
 import com.example.Sales.service.OrderLineItemService;
 import com.example.Sales.service.SalesOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/sales-api")
+@RequestMapping("/sales")
 public class SalesOrderController {
-
-
     @Autowired
     private SalesOrderService salesOrderService;
-
     @Autowired
     private OrderLineItemService orderLineItemService;
-
     @Autowired
     private CustomerServiceProxy customerServiceProxy;
-
     @Autowired
     private ItemServiceProxy itemServiceProxy;
 
-
-
-
-    @GetMapping("/orders/notUsing/{email}")
-    public List<HashMap<String,Integer>> getOrderByEmail(@PathVariable("email") String email){
-
-        HashMap<String, Integer> hmap = new HashMap<>();
-        List<HashMap<String,Integer>> finalList = new ArrayList<>();
-        List<SalesOrder> orderIds = salesOrderService.getOrderByEmail(email);
-        for (SalesOrder salesOrder: orderIds) {
-            hmap = this.orderLineItemService.getOrdersById(salesOrder.getId());
-            finalList.add(hmap);
-        }
-        if (finalList.isEmpty()){
-          throw new OrdersNotFoundException("Orders for "+ email + "not found");
-        }
-        return finalList;
-
+    public SalesOrderController(SalesOrderService salesOrderService,OrderLineItemService orderLineItemService,
+                                CustomerServiceProxy customerServiceProxy, ItemServiceProxy itemServiceProxy) {
+        this.salesOrderService = salesOrderService;
+        this.orderLineItemService = orderLineItemService;
+        this.customerServiceProxy = customerServiceProxy;
+        this.itemServiceProxy = itemServiceProxy;
     }
 
     @PostMapping("/add")
@@ -76,12 +54,10 @@ public class SalesOrderController {
             if (itemForValidation!=null){
                 System.out.println("Item Validation passes");
                 existingItemsList.add(item);
+                System.out.println(existingItemsList);
                 price=price+itemServiceProxy.getItemByName(item).getPrice();
             }
-            else{
-                System.out.println("order cannot be created. Item validation Failed");
-                throw new OrderCannotBeCreated("Items not present.This Order Cannot be Created");
-            }
+
         }
 
         System.out.println("existingItems after validation: " + existingItemsList );
@@ -101,12 +77,10 @@ public class SalesOrderController {
         return id;
     }
 
-
+    //return the item details and sales order details for given email
     @GetMapping("/orders/{email}")
     public List<Object> getOrderListByEmail(@PathVariable("email") String email){
         List<SalesOrder> salesOrders= this.salesOrderService.getOrderByEmail(email);
-
-        //retrieve items for each orderId
         return salesOrders.stream().map(salesOrder ->{
         List<OrderLineItem> orderLineItems=this.orderLineItemService.getOrderLineItemsByOrderId(salesOrder.getId());
                     List<String> itemNames = new ArrayList<>();
@@ -122,7 +96,6 @@ public class SalesOrderController {
                     returnOrder.setDescription(salesOrder.getDescription());
                     return returnOrder;
         }).collect(Collectors.toList());
-
     }
 }
 

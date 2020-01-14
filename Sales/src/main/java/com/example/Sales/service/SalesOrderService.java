@@ -2,37 +2,29 @@ package com.example.Sales.service;
 
 import com.example.Sales.exception.OrdersNotFoundException;
 import com.example.Sales.model.CreateOrder;
-import com.example.Sales.model.OrderLineItem;
 import com.example.Sales.model.SalesOrder;
-import com.example.Sales.repository.OrderLineItemRepository;
 import com.example.Sales.repository.SalesOrderRepository;
-import org.hibernate.criterion.Order;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.AssociationOverride;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SalesOrderService {
 
-    @Autowired
-    private SalesOrderRepository salesOrderRepository;
-
-    @Autowired
-    private OrderLineItemService orderLineItemService;
-
-    @Autowired
-    private OrderLineItemRepository orderLineItemRepository;
-
 //    @Autowired
-    private OrderLineItem orderLineItem;
+    private SalesOrderRepository salesOrderRepository;
+//    @Autowired
+    private OrderLineItemService orderLineItemService;
+//    @Autowired
+//    private OrderLineItemRepository orderLineItemRepository;
+////    @Autowired
+//    private OrderLineItem orderLineItem;
+//    @Autowired
+//    private ItemServiceProxy itemServiceProxy;
 
-    @Autowired
-    private ItemServiceProxy itemServiceProxy;
+    public SalesOrderService (SalesOrderRepository salesOrderRepository,OrderLineItemService orderLineItemService){
+        this.salesOrderRepository=salesOrderRepository;
+        this.orderLineItemService=orderLineItemService;
+    }
 
 
 //    Updating Create Order [i/p = desc, date, email,item list] [o/p = orderId]

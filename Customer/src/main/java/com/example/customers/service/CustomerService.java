@@ -1,10 +1,8 @@
 package com.example.customers.service;
 
-
 import com.example.customers.exception.CustomerNotFoundException;
 import com.example.customers.model.Customers;
 import com.example.customers.repository.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,18 +11,22 @@ import java.util.Optional;
 @Service
 public class CustomerService {
 
-    @Autowired
+//    @Autowired
     private CustomerRepository customerRepository;
+
+    public CustomerService(CustomerRepository customerRepository){
+        this.customerRepository=customerRepository;
+    }
 
     //create new Customer
     public Customers add(Customers customers){
-        System.out.println("added...");
+        System.out.println("Added the customer");
         return customerRepository.save(customers);
     }
 
     //getAll
     public List<Customers> getAll(){
-        System.out.println("i think i got them all...");
+        System.out.println("Got all the Customers");
         return customerRepository.findAll();
     }
 
@@ -32,7 +34,7 @@ public class CustomerService {
     public Customers getCustomerByEmail(String email){
         Optional <Customers> customerWithEmail = customerRepository.findByEmail(email);
         if(customerWithEmail.isPresent()){
-            System.out.println("got it...");
+            System.out.println("got the customer from email");
             return customerWithEmail.get();
         }
         else{

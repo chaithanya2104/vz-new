@@ -6,11 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Customer" />
-        <module name="ConfigServer" />
+        <module name="Sales" />
         <module name="ZuulGateway" />
         <module name="ConfigurationServer" />
-        <module name="Sales" />
+        <module name="Customer" />
         <module name="EurekaServer" />
         <module name="H2" />
         <module name="Item" />
