@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/sales-api")
@@ -35,7 +36,9 @@ public class SalesOrderController {
     private ItemServiceProxy itemServiceProxy;
 
 
-    @GetMapping("/orders/{email}")
+
+
+    @GetMapping("/orders/notUsing/{email}")
     public List<HashMap<String,Integer>> getOrderByEmail(@PathVariable("email") String email){
 
         HashMap<String, Integer> hmap = new HashMap<>();
@@ -99,9 +102,27 @@ public class SalesOrderController {
     }
 
 
-    @GetMapping("/orders/new/{email}")
-    public List<SalesOrder> getOrderListByEmail(@PathVariable("email") String email){
-        return salesOrderService.getOrderByEmail(email);
+    @GetMapping("/orders/{email}")
+    public List<Object> getOrderListByEmail(@PathVariable("email") String email){
+        List<SalesOrder> salesOrders= this.salesOrderService.getOrderByEmail(email);
+
+        //retrieve items for each orderId
+        return salesOrders.stream().map(salesOrder ->{
+        List<OrderLineItem> orderLineItems=this.orderLineItemService.getOrderLineItemsByOrderId(salesOrder.getId());
+                    List<String> itemNames = new ArrayList<>();
+                    orderLineItems.forEach(item -> {
+                        for(int i=0 ; i<item.getQuantity() ; i++) {
+                            itemNames.add(item.getItemName());
+                        }
+                    });
+                    CreateOrder returnOrder = new CreateOrder();
+                    returnOrder.setEmail(salesOrder.getEmail());
+                    returnOrder.setDate(salesOrder.getDate());
+                    returnOrder.setItems(itemNames);
+                    returnOrder.setDescription(salesOrder.getDescription());
+                    return returnOrder;
+        }).collect(Collectors.toList());
+
     }
 }
 

@@ -10,7 +10,7 @@ import java.util.List;
 
 //@FeignClient(name="item-service", url="localhost:8081")
 //@FeignClient(name="item-service")
-@FeignClient(name="zuul-gateway")
+@FeignClient(name="zuul-gateway" , fallback = HystrixProxyFallBack.class)
 @RibbonClient(name="item-service")
 public interface ItemServiceProxy {
     //getItemByName

@@ -1,0 +1,12 @@
+---
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/chaithanya2104/ms-configs.git
+          username: Chaithanya2104
+          password: Github21
+server.port: 8888

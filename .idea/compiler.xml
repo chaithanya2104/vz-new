@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Customer" />
+        <module name="ConfigServer" />
         <module name="ZuulGateway" />
         <module name="ConfigurationServer" />
         <module name="Sales" />

@@ -42,10 +42,12 @@ public class ItemController {
     @GetMapping("/items/hystrix-fault-tolerance")
     @HystrixCommand(fallbackMethod = "faultToleranceFallbackMethod")
     public Items testFaultTolerance(){
-        throw  new RuntimeException("end point currently down...");
+        System.out.println("abhi toh party shuru hui hai!!!");
+        throw  new RuntimeException(" there was an error in execution");
     }
 
     public Items faultToleranceFallbackMethod(){
+        System.out.println("hey something went wrong in the original method so we are here in fallback...");
         Items dummyObject = new Items("dummy name", 99.99, "dummydescription");
         return dummyObject;
     }

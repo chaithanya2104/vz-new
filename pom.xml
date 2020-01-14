@@ -43,7 +43,7 @@
     </properties>
 
     <modules>
-<!--        <module>ConfigServer</module>-->
+        <module>ConfigServer</module>
         <module>Customer</module>
         <module>Item</module>
         <module>Sales</module>

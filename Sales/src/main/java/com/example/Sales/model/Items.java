@@ -1,6 +1,8 @@
 package com.example.Sales.model;
 
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +10,7 @@ import javax.persistence.Id;
 
 //@Entity
 //@Table(name="items")
+@Data
 public class Items {
 
     @Id

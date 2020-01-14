@@ -56,5 +56,12 @@ public class OrderLineItemService {
         return hmap;
     }
 
+    public List<OrderLineItem> getOrderLineItemsByOrderId(Long orderId) {
+        List<OrderLineItem> orderItems = orderLineItemRepository.getOrderLineItemsByOrderId(orderId);
+        return orderItems;
+    }
+
+
+
 
 }
